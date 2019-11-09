@@ -1,0 +1,33 @@
+{% load static from staticfiles %}
+<html>
+<head>
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" rel="stylesheet">
+
+    </head>
+
+<body>  
+        <div class="w3-top-center">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+        <img src="{% static 'logo.png' %}" style="height: 20%"></div></div></div>
+<div class="Login-title">
+    <br>
+    <h1 style="font-family: 'Oxygen', sans-serif;">Account Login</h1>
+    <div class="Login-form">
+   <form id="Login-form" method="POST" action="/login/" >
+   {% csrf_token %}
+    <input style="color: white" name="name" type="username" class="form-control" placeholder="Your username" required>
+     <br><br>
+      <input name="password" type="password" class="form-control" placeholder="Your password" required>
+     <br><br>
+      <input type="submit" class="form-control submit" value="Login">
+ 
+        </form>
+    </div>
+    </div>
+    </body>
+</html>
+    

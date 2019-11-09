@@ -1,0 +1,106 @@
+{% load static from staticfiles %}
+<html>
+   <title>Shortlisted applications</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=monospace">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link href="https://fonts.googleapis.com/css?family=Oxygen&display=swap" rel="stylesheet">
+   <style>
+      footer{
+      display: flex;
+      justify-content: left;
+      padding: 5px;
+      background-color: #45a1ff;
+      color: #fff;
+      }
+      body, html {
+      height: 90%;
+      font-family:monospace;
+      }
+      .bgimg {
+      background-position: center;
+      background-size: cover;
+      background-image: url("{% static 'office.jpg' %}");
+      min-height: 75%;
+      }
+      .menu {
+      display: none;
+      }
+   </style>
+   <body>
+      <div class="w3-top-center">
+         <div class="w3-row w3-padding w3-black">
+            <div class="w3-col s3">
+               <img src="{% static 'logo.png' %}" style="height: 20%">
+            </div>
+         </div>
+      </div>
+      <div class="w3-top">
+         <div class="w3-row w3-padding w3-black">
+            <div class="w3-col s3">
+               <a href="/Admin/" class="w3-button w3-block w3-black">APPLICATIONS</a>
+            </div>
+            <div class="w3-col s3">
+               <a href="/shortlist/" class="w3-button w3-block w3-black">SHORTLISTED APPLICATIONS</a>
+            </div>
+            <div class="w3-col s3">
+               <a  href="/admin_jobs/" class="w3-button w3-block w3-black">EDIT JOBS</a>
+            </div>
+         </div>
+      </div>
+      <header class="bgimg w3-display-container w3-grayscale-min" id="home">
+         <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+         </div>
+         <div class="w3-display-middle w3-center">
+            <span class="w3-text-white" style="font-size:90px">ADMIN<br>HOMEPAGE</span>
+         </div>
+         <div class="w3-display-bottomright w3-center w3-padding-large">
+         </div>
+      </header>
+      <div class="w3-sand w3-grayscale w3-large">
+         <div class="w3-container" id="about">
+            <div class="w3-content" style="max-width:700px">
+               <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Shorlisted applications</span></h5>
+               {% for i in cv %}
+               <div>
+                  <div class="text-center border-bottom" style="width: auto">
+                     <div class="py-4" style="background-color:#ced6e0">
+                        <h2 class="pl-2 pb-1 text-center border-bottom m-auto" style="width:50%;font-family: 'Oxygen', sans-serif;">{{i.name}}</h2>
+                        <p class="pl-2">Post: <span style="font-size:15px;">{{i.job}}</p>
+                        <div class="w3-container-left pl-2 row px-4" id="about">
+                           <div class="col-md-3 m-auto">
+                              <a href='/reject/{{i.uid}}/{{i.jid}}' class='btn btn-danger btn-block'>Reject</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+      <br><br><br><br><br><br><br><br><br><br>
+      <footer>
+         Copyright © admin. All rights reserved.
+      </footer>
+      <script>
+         // Tabbed Menu
+         function openMenu(evt, menuName) {
+           var i, x, tablinks;
+           x = document.getElementsByClassName("menu");
+           for (i = 0; i < x.length; i++) {
+             x[i].style.display = "none";
+           }
+           tablinks = document.getElementsByClassName("tablink");
+           for (i = 0; i < x.length; i++) {
+             tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+           }
+           document.getElementById(menuName).style.display = "block";
+           evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+         }
+         document.getElementById("myLink").click();
+      </script>
+   </body>
+</html>

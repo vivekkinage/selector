@@ -1,0 +1,146 @@
+<html>
+<title>Admin Homepage</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=monospace">
+<style>
+    button {
+  background-color: royalblue;
+  color: white;
+  padding: 7px 10px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+}
+    footer {
+    display: flex;
+    justify-content: left;
+    padding: 5px;
+    background-color: #45a1ff;
+    color: #fff;
+    }
+body, html {
+  height: 90%;
+  font-family:monospace;
+}
+
+.bgimg {
+    <div class="w3-top-center">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+        <img src="logo.png" style="height: 20%"></div></div></div>  background-position: center;
+  background-size: cover;
+  background-image: url("office.jpg");
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}
+</style>
+<body>
+    <div class="w3-top-center">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+        <img src="logo.png" style="height: 20%"></div></div></div>
+
+
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+      <a href="file:///C:/Users/Admin/Desktop/CV%20analysis/ad_home1.html" class="w3-button w3-block w3-black">APPLICATIONS</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="file:///C:/Users/Admin/Desktop/CV%20analysis/ad_home2.html" class="w3-button w3-block w3-black">SHORTLISTED APPLICATIONS</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="file:///C:/Users/Admin/Desktop/CV%20analysis/ad_home3.html" class="w3-button w3-block w3-black">EDIT JOBS</a>
+    </div>
+  </div>
+</div>
+
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+  </div>
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-white" style="font-size:90px">ADMIN<br>HOMEPAGE</span>
+  </div>
+  <div class="w3-display-bottomright w3-center w3-padding-large">
+  </div>
+</header>
+
+
+<div class="w3-sand w3-grayscale w3-large">
+
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ADMIN FUNCTIONALITIES</span></h5>
+      <h2 style="align-content: center"><b><u>EDIT JOBS</u> :</b></h2><br>
+      
+      <div>   <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">ADD NEW JOB</button></div>
+       <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+      
+           <br><div><title>Add a job</title><br>
+          <textarea rows="4" cols="30" placeholder="Job title">
+</textarea><br><br>
+              <textarea rows="5" cols="50" placeholder="Job description">
+</textarea>
+         <br><br>
+          <div class="w3-container-left" id="about"><button style="background-color:blue" type="Select" formaction="file:///C:/Users/Admin/Desktop/CV%20analysis/login.html">ADD JOB</button>
+          </div></div>
+        </div></div></div></div>
+             
+<br><br><br>
+      
+      <div><div style="width: auto">
+      <div style="background-color:burlywood" >
+          
+          
+  <h3><u>Data analyst</u></h3>
+ <div class="w3-container-left" id="about"><button style="background-color:red" type="Select" formaction="file:///C:/Users/Admin/Desktop/CV%20analysis/login.html">Remove</button>
+</div>
+  </div><br>
+      
+    <div style="background-color:burlywood">
+  <h3><u>Manager</u></h3>
+ <div class="w3-container-left" id="about"><button style="background-color:red" type="Select" formaction="file:///C:/Users/Admin/Desktop/CV%20analysis/login.html">Remove</button>
+</div>
+</div><br>
+      
+       <div style="background-color:burlywood">
+  <h3><u>Android developer</u></h3>
+ <div class="w3-container-left" id="about"><button style="background-color:red" type="Select" formaction="file:///C:/Users/Admin/Desktop/CV%20analysis/login.html">Remove</button>
+</div>
+</div></div></div></div>
+
+
+</div>
+<br><br><br><br><br><br><br><br><br><br>
+<footer>
+    Copyright © admin. All rights reserved.
+</footer> 
+
+<script>
+
+    function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+}
+document.getElementById("myLink").click();
+</script>
+
+    </body></html>
