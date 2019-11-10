@@ -1,119 +1,94 @@
-<html>
+{% load static from staticfiles %}
+<!DOCTYPE html>
+
+<html lang="en">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: black;
-}    
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
 
-{
-  box-sizing: border-box;
-}
+    <!-- Title Page-->
+    <title>Au Register Forms by Colorlib</title>
 
-.container {
-  padding: 16px;
-  background-color: black;
-}
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
-input[type=text], input[type=password] {
-  width: 50%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-
-hr {
-  border: 1px solid black;
-  margin-bottom: 25px;
-}
-
-
-.registerbtn {
-  background-color: #057F90;
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 50%;
-  opacity: 0.9;
-}
-
-.registerbtn:hover {
-  opacity: 1;
-}
-
-
-a {
-  color: dodgerblue;
-}
-
-.signin {
-  background-color: black;
-  text-align: left;
-}
-    footer {
-    display: flex;
-    justify-content: left;
-    padding: 5px;
-    background-color: #45a1ff;
-    color: #fff;
-    }
-</style>
+    <!-- Main CSS-->
+    <link href="{% static 'main.css' %}" rel="stylesheet" media="all">
 </head>
-<body>
-         <div class="w3-top-center">
-  <div class="w3-row w3-padding w3-black">
-    <div class="w3-col s3">
-        <img src="logo.png" style="height: 20%"></div></div></div>
-    
-    <div class="w3-display-container w3-animate-opacity">
-  <img src="corp.jpg" alt="boat" style="width:100%;min-height:250px;max-height:400px;">
-  <div class="w3-container w3-display-bottomleft w3-margin-bottom">  
-    
-  </div>
-</div>
-<form action="/action_page.php">
-  <div class="container">
-    <h1 style="color: white"><u>Register</u></h1>
-    <p style="color: white">Please fill in this form to create your account</p>
-    <hr>
-<label style="color: white" for="Name"><b>Name :</b></label><br>
-    <input type="text" placeholder="Enter name" name="name" required><br>
-      
-      <label style="color: white" for="branch"><b>Birthdate :</b></label><br>
-    <input type="text" placeholder="DD/MM/YYYY" name="birthdate" required><br>
-      
- <label style="color: white" for="branch"><b>Gender :</b></label><br><br>
-        <input style="color:white" type="radio" name="gender" value="male"><label style="color: white">Male</label>
-        <input style="color:white" type="radio" name="gender" value="female"> <label style="color: white">Female</label><br><br><br>  
 
-    <label style="color: white" for="email"><b>Email Id :</b></label><br>
-    <input type="text" placeholder="Enter Email" name="email" required><br>
-      
-      <label style="color: white" for="psw"><b>Password :</b></label><br>
-    <input type="password" placeholder="Enter Password" name="psw" required><br>
-    
-    <button type="submit" class="registerbtn">Register</button>
-  </div>
-  
-  <div class="container signin">
-    <p style="color: white">Already a member ? &nbsp;&nbsp;<a href="file:///C:/Users/Admin/Desktop/CV%20analysis/login.html">Log in</a>.</p>
-  </div>
-</form><br><br><br><br>
-<footer>
-    Copyright © admin 2019. All rights reserved.
-</footer> 
-    
-</body>
+<body >
+    <div class="page-wrapper p-t-180 p-b-100 font-poppins" style="
+    background-image: url('http://getwallpapers.com/wallpaper/full/0/e/1/293966.jpg');
+">
+        <div class="wrapper wrapper--w780">
+            <div class="card card-3" style="background: rgba(0,0,0, 0.4);">
+                <div class="card-heading" style="
+    background-image: url('https://fsa.zobj.net/crop.php?r=fwG-6dp-RS_0qL1Z9oBfW1gMnAtD6fpzx7b6LTJoAJjrlT_jeVJz2Wdbx50p__YanZiqqS0O883McZ9bcZyO5CI40M0SpHbHmx5eyPpJQiEKflgpN-43BmWcZD0Z_BGBEFwQeukdiPld-HhVgZnSaosGblqaZJN0sHu5DwLJq1yT1yNl_wfZ2oSnCzw');
+"></div>
+                <div class="card-body">
+                    <h2 class="title">Registration Info</h2>
+                    <form method="POST" action="/register/">
+                        {% csrf_token %} 
+                        <div class="input-group">
+                            <input class="input--style-3"  type="text" placeholder="Name" name="name">
+                        </div>
+                        <div class="input-group">
+                            <input class="input--style-3 js-datepicker" type="text" placeholder="Birthdate" name="birthday">
+                            <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                        </div>
+                        <div class="input-group">
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="gender">
+                                    <option disabled="disabled" selected="selected">Gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <input class="input--style-3" type="email" placeholder="Email" name="email">
+                        </div>
+                        <div class="input-group">
+                            <input class="input--style-3" type="text" placeholder="Phone" name="phone">
+                        </div>
+
+                        <div class="input-group">
+                            <input class="input--style-3" type="text" placeholder="Password" name="password">
+                        </div>
+                        <div class="p-t-10">
+                            <button class="btn btn--pill btn--green" name="Submit" value="Submit1" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/global.js"></script>
+
+</body><!-- This templates was made by Colorlib (https://templated.co/interphase) -->
+
 </html>
+<!-- end document-->

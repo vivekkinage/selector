@@ -46,10 +46,11 @@ def login(request):
         var = REGISTRATIONS.objects.filter(email=em_id)
         print('\n\n\n\n\n\nvar:',var)
         id=len(var)
-        if id!=0:
+        if request.session['username']:
             for i in var:
                 if i.password==ps:
                     print('\n\n\n\nsuccesfull!!!!!!!!!!!!!!!!')
+                    request.session['username']=i.name
                     info = {'user_id':i.user_key,'user_name':i.name}
                     print('\n\n\n\n\n\nuser Key:',info['user_id'])
                     return redirect('/',request)
@@ -90,7 +91,7 @@ def jobs(request):
     if info['user_id']!=9999999999999999999999999999999999999999999999999999999:
         all=job.objects.all()
         print(all)
-        return render(request, 'jobs.html', {'jobs':all})
+        return render(request, 'jobs.html', {'jobs':all,'user':all[0].name})
     else:
         return redirect('/login/',request)
 
@@ -143,7 +144,7 @@ def shortlist(request):
             for k in lst1:
                 if j in k:
                     print('found :',j)
-                    select(request,i.uid)
+                    select(request,i.uid,i.jid)
     cv=cvs.objects.filter(status=1)
     return render(request,'shortlist.html',{'cv':cv})
 
@@ -156,7 +157,7 @@ def select(request,uid,jid):
     cv.update(status=1,job=jb[0].name)
     print('\n\n\n\n\n',cv[0].name)
     # creates SMTP session
-    '''s = smtplib.SMTP('smtp.gmail.com', 587)
+    s = smtplib.SMTP('smtp.gmail.com', 587)
 
     # start TLS for security
     s.starttls()
@@ -171,7 +172,7 @@ def select(request,uid,jid):
     s.sendmail("miniproject2504@gmail.com", obj[0].email, message)
 
     # terminating the session
-    s.quit()'''
+    s.quit()
     cv=cvs.objects.filter(status=0)
     return render(request,'dashboard.html',{'cv':cv})
 
@@ -181,6 +182,9 @@ def reject(request,uid,jid):
     cv.delete()
     return redirect('/shortlist',request)
 
+def logout(request):
+    request.session['username']=False
+    return redirect('/login/')
 
 def extract_text_from_pdf(pdf_path):
     resource_manager = PDFResourceManager()
@@ -196,6 +200,7 @@ def extract_text_from_pdf(pdf_path):
     # close open handles
     converter.close()
     fake_file_handle.close()
+    print('\n\ntext:',text)
     if text:
         result=re.search(r'TECHNICAL SKILLS(.*?)ACHIEVEMENTS', text).group(1)
         return result
